@@ -1,0 +1,58 @@
+gui: #Here you set some information about the gui
+   title: "Example GUI"
+   size: 54 #The size of a gui can be 9,18, 27, 36, 45, 54
+   disable-moving-items: true #If the player should be able to move items around in the inventory can. This can only be 'true' or 'false'
+   permission-needed: "" #Here you can specify a permission a player needs to have to open the menu, if you dont want one you can just leave it blank or remove the line
+   sound: #This a a sound that will be played for the player when they open the gui
+     sound: BLOCK_NOTE_BLOCK_PLING #This is the sound that will be played when the player opens the gui. All valid sounds can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+     volume: 1 #This is the volume of the sound it can be anything from 0-1.
+     pitch: 0.5 #This is the pitch of the sound and be anything from 0.5-2. Pitch means how fast the sound is played
+   message: "§7This is a §cExample §fGUI" #This is a message sent to the player the player opens the gui
+   command-player: "/help" #This is the command the player will send when when the player opens the gui
+   command-console: "/give {player} diamond" #This is the command the console will send when when the player opens the gui
+
+items: #Here you set the contents of the gui. it needs to have this tag before all the items like its here
+   item1: #can be anything you want, and does not effect the configuration at all. It is for you to have identifiers. it can be a number or it can be random string of text
+     material: dirt #This is the material the item will be. All the valid material can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+     display-name: "Dirt from god" #This is the name of the item, it can have a custom color code
+     amount: 1 #The amount of the item in the gui
+     slot: 10 #This is the slot where the item will be, the slots can be found here: https://proxy.spigotmc.org/ca33289f0d69cf685454fd6d4843cd392b5572c3?url=http%3A%2F%2Fi.imgur.com%2Flr41ykP.png
+     lore:
+        - "This is the lore of the item"
+        - "And is the text that is under the item"
+        - "This can be anything. And can also have colors"
+     enchantments: #This is where you set what enchantments the item should have. All the valid enchantments can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
+        - KNOCKBACK,1
+     itemflags: #This is where you set what itemflags should be on the item. All the valid itemflags can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/inventory/ItemFlag.html
+       - HIDE_ENCHANTS
+
+   item2:
+      material: player_head #This is the material the item will be. All the valid material can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+      display-name: "&l#CD201FYoutube Logo" #For the name of a item you can also minecraft color codes or hex color codes. Minecraft color codes can be found here: https://www.spigotmc.org/attachments/example2-png.188806/
+      amount: 1
+      slots: #You can also set multiple slots for where a item will be
+        - 12
+        - 14
+      lore:
+         - "§7This is the &cYoutube logo"
+      skull-texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWM1NmRkYmVmMWI4MWJkNTdjOWIxYzZkNWQxYjc4YjU0NzM3YjcxOTkyOWIyOWMyYTkzMGE1ZjdjMmFlNGE4NiJ9fX0=" #This is the skull texture of the player head
+
+   item3:
+     material: player_head
+     display-name: "You"
+     amount: 1
+     slot: 22
+     lore:
+       - "§7This is your skull"
+     skull-texture: "{player}" #You can also set the skull texture to '{player}' this will set the skull texture to the player that opens the menu
+
+   item4:
+     material: potion
+     #If no name was specified it will just use the material name
+     amount: 1
+     slot: 16
+     effect: poison #This is where you set the effect for the potion. All valid potion effects can be found here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/potion/PotionType.html
+     extended: false #If the potion should last longer
+     upgraded: true #If the potion should be a higher strength
+     lore:
+       - "§7This is a &2Poison §7potion"

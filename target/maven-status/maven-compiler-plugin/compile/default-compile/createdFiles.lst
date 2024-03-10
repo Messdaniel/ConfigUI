@@ -1,0 +1,7 @@
+me\messdaniel\configui\manager\ConfigUIManger.class
+me\messdaniel\configui\utils\ColorUtils.class
+me\messdaniel\configui\command\OpenGuiCommand.class
+me\messdaniel\configui\utils\MessagesUtils.class
+me\messdaniel\configui\ConfigUI.class
+me\messdaniel\configui\menu\Menu.class
+me\messdaniel\configui\menu\MenuItem.class

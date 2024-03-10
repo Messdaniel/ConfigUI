@@ -1,0 +1,7 @@
+name: ConfigUI
+version: 1.0
+main: me.messdaniel.configui.ConfigUI
+api-version: 1.19
+commands:
+  opengui:
+    permission: configui.openmenu
