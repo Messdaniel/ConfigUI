@@ -1,14 +1,20 @@
 package me.messdaniel.configui.menu;
 
+import me.messdaniel.configui.ConfigUI;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Menu {
+public class Menu implements Listener {
 
     private String name;
     private int size = 54;
@@ -16,12 +22,18 @@ public class Menu {
     private boolean disabledMovingItems = false;
     private String permissionNeeded = null;
     private ArrayList<MenuItem> contents = new ArrayList<>();
-    private Sound sound;
-    private double volume;
-    private double pitch;
-    private String message;
-    private String commandPlayer;
-    private String commandConsole;
+    private Sound open_sound;
+    private double open_volume;
+    private double open_pitch;
+    private List<String> open_message;
+    private List<String> open_commandPlayer;
+    private List<String> open_commandConsole;
+    private Sound close_sound;
+    private double close_volume;
+    private double close_pitch;
+    private List<String> close_message;
+    private List<String> close_commandPlayer;
+    private List<String> close_commandConsole;
 
     public Menu (String name) {
         this.name = name;
@@ -77,52 +89,100 @@ public class Menu {
         this.contents = contents;
     }
 
-    public Sound getSound() {
-        return sound;
+    public Sound getOpen_sound() {
+        return open_sound;
     }
 
-    public void setSound(Sound sound) {
-        this.sound = sound;
+    public void setOpen_sound(Sound open_sound) {
+        this.open_sound = open_sound;
     }
 
-    public double getVolume() {
-        return volume;
+    public double getOpen_volume() {
+        return open_volume;
     }
 
-    public void setVolume(double volume) {
-        this.volume = volume;
+    public void setOpen_volume(double open_volume) {
+        this.open_volume = open_volume;
     }
 
-    public double getPitch() {
-        return pitch;
+    public double getOpen_pitch() {
+        return open_pitch;
     }
 
-    public void setPitch(double pitch) {
-        this.pitch = pitch;
+    public void setOpen_pitch(double open_pitch) {
+        this.open_pitch = open_pitch;
     }
 
-    public String getMessage() {
-        return message;
+    public List<String> getOpen_message() {
+        return open_message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setOpen_message(List<String> open_message) {
+        this.open_message = open_message;
     }
 
-    public String getCommandPlayer() {
-        return commandPlayer;
+    public List<String> getOpen_commandPlayer() {
+        return open_commandPlayer;
     }
 
-    public void setCommandPlayer(String commandPlayer) {
-        this.commandPlayer = commandPlayer;
+    public void setOpen_commandPlayer(List<String> open_commandPlayer) {
+        this.open_commandPlayer = open_commandPlayer;
     }
 
-    public String getCommandConsole() {
-        return commandConsole;
+    public List<String> getOpen_commandConsole() {
+        return open_commandConsole;
     }
 
-    public void setCommandConsole(String commandConsole) {
-        this.commandConsole = commandConsole;
+    public void setOpen_commandConsole(List<String> open_commandConsole) {
+        this.open_commandConsole = open_commandConsole;
+    }
+
+    public Sound getClose_sound() {
+        return close_sound;
+    }
+
+    public void setClose_sound(Sound close_sound) {
+        this.close_sound = close_sound;
+    }
+
+    public double getClose_volume() {
+        return close_volume;
+    }
+
+    public void setClose_volume(double close_volume) {
+        this.close_volume = close_volume;
+    }
+
+    public double getClose_pitch() {
+        return close_pitch;
+    }
+
+    public void setClose_pitch(double close_pitch) {
+        this.close_pitch = close_pitch;
+    }
+
+    public List<String> getClose_message() {
+        return close_message;
+    }
+
+    public void setClose_message(List<String> close_message) {
+        this.close_message = close_message;
+    }
+
+    public List<String> getClose_commandPlayer() {
+        return close_commandPlayer;
+    }
+
+    public void setClose_commandPlayer(List<String> close_commandPlayer) {
+        this.close_commandPlayer = close_commandPlayer;
+    }
+
+    public List<String> getClose_commandConsole() {
+        return close_commandConsole;
+    }
+
+    public void setClose_commandConsole(List<String> close_commandConsole) {
+        this.close_commandConsole = close_commandConsole;
     }
 
     public Inventory createInventory(Player player) {

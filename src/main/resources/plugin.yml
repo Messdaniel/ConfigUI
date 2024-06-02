@@ -3,5 +3,7 @@ version: 1.0
 main: me.messdaniel.configui.ConfigUI
 api-version: 1.19
 commands:
-  opengui:
+  uiopengui:
     permission: configui.openmenu
+  uireload:
+    permission: configui.reload

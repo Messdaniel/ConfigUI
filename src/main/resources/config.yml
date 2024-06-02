@@ -1,13 +1,15 @@
-
+prefix: "§7[#C0C0C0Config§fUI§7]"
 
 
 messages: #Any message you dont want you can leave empty it will not send the message then
-  openmenu-usages: "/openmenu <menuname> <player>" #When the player does not use /openmenu correctly
-  no-player-online: "§cCould not find a player online with the name {name}" #When the player gives a wrong name using /powers give or /powers take
-  reloaded-successfully: "§aSuccessfully reloaded the plugin" #When the plugin gets successfully reloaded by using /powers reload
-  only-player-command: "This command can only be used by players in game" #When the console is trying to use the /powers command
-  dont-have-perms: "§cYou don't have required permission to use this command!" #When the player don't have the needed perm to use the command  only-player-command: "This command can only be used by players in game" #When the console is trying to use the /powers command
-  dont-have-perms-inv: "§cYou don't have required permission to open this gui!" #When the player don't have the needed perm to open a menu
-  no-gui-found: "§cFound no gui with the name {name}" #When the player tries to open a menu with the wrong name
-  opened-gui: "§7Sucsessfully Opened a gui with the name {guiname}" #When a player opens a gui
-  opened-gui-for-other: "§7Sucsessfully Opened a gui with the name {guiname}" #When a player opens a gui for another player
+  openmenu-usages: "{prefix} §7/openmenu <menuname> <player>" #When the player does not use /openmenu correctly
+  no-player-online: "{prefix} §cCould not find a player online with the name {name}" #When the player gives a wrong name using /powers give or /powers take
+  reloaded-successfully: "{prefix} §aSuccessfully reloaded the plugin" #When the plugin gets successfully reloaded by using /powers reload
+  only-player-command: "{prefix} §cThis command can only be used by players in game" #When the console is trying to use the /powers command
+  dont-have-perms: "{prefix} §cYou don't have required permission to use this command!" #When the player don't have the needed perm to use the command  only-player-command: "This command can only be used by players in game" #When the console is trying to use the /powers command
+  dont-have-perms-inv: "{prefix} §cYou don't have required permission to open this gui!" #When the player don't have the needed perm to open a menu
+  no-gui-found: "{prefix} §cFound no gui with the name {name}" #When the player tries to open a menu with the wrong name
+  opened-gui: "{prefix} §7Sucsessfully Opened a gui with the name {guiname}" #When a player opens a gui
+  opened-gui-for-other: "{prefix} §7Sucsessfully Opened a gui with the name {guiname}" #When a player opens a gui for another player
+  reload-successful: "{prefix} §aSucsessfully reloaded the plugin" #When the plugin has been successfully reloaded
+  reload-not-successful: "{prefix} §cWarings while reloading the plugin, look in console for reason"  #When the plugin has not been successfully reloaded

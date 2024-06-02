@@ -3,16 +3,32 @@ gui: #Here you set some information about the gui
    size: 54 #The size of a gui can be 9,18, 27, 36, 45, 54
    disable-moving-items: true #If the player should be able to move items around in the inventory can. This can only be 'true' or 'false'
    permission-needed: "" #Here you can specify a permission a player needs to have to open the menu, if you dont want one you can just leave it blank or remove the line
-   sound: #This a a sound that will be played for the player when they open the gui
-     sound: BLOCK_NOTE_BLOCK_PLING #This is the sound that will be played when the player opens the gui. All valid sounds can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
-     volume: 1 #This is the volume of the sound it can be anything from 0-1.
-     pitch: 0.5 #This is the pitch of the sound and be anything from 0.5-2. Pitch means how fast the sound is played
-   message: "§7This is a §cExample §fGUI" #This is a message sent to the player the player opens the gui
-   command-player: "/help" #This is the command the player will send when when the player opens the gui
-   command-console: "/give {player} diamond" #This is the command the console will send when when the player opens the gui
+
+   open-event: #This is what will happen when the gui gets opened
+     sound: #This a where you set what sound will be played for the player when the player opens the gui
+       sound: BLOCK_NOTE_BLOCK_PLING #This is the sound that will be played when the player opens the gui. All valid sounds can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+       volume: 1 #This is the volume of the sound it can be anything from 0-1.
+       pitch: 0.5 #This is the pitch of the sound and be anything from 0.5-2. Pitch means how fast the sound is played
+     message: #This is the messages sent to the player when gui gets opened for them
+       - "§7This is a §cExample §fGUI"
+     command-player: #This is the commands the player will send when the player opens the gui
+       - "/help"
+     command-console: #This is the commands the console will send when the player opens the gui
+       - "/give {player} diamond"
+   close-event: #This is what will happen when the gui gets closed
+     sound: #This a sound that will be played for the player when they close the gui
+       sound: BLOCK_NOTE_BLOCK_PLING #This is the sound that will be played when the player close the gui. All valid sounds can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+       volume: 1 #This is the volume of the sound it can be anything from 0-1.
+       pitch: 0.5 #This is the pitch of the sound and be anything from 0.5-2. Pitch means how fast the sound is played
+     message: #This is the messages sent to the player when gui closes
+       - "§7The §cExample §fGUI §7Closed"
+     command-player: #This is the commands the player will send when the player closes the gui
+       - "/help"
+     command-console: #This is the commands the console will send when the player closes the gui
+       - "/give {player} diamond"
 
 items: #Here you set the contents of the gui. it needs to have this tag before all the items like its here
-   item1: #can be anything you want, and does not effect the configuration at all. It is for you to have identifiers. it can be a number or it can be random string of text
+   item1: #This is just a identifier and is needed for the code to know that this a item. It can be a number or it can be random string of text
      material: dirt #This is the material the item will be. All the valid material can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
      display-name: "Dirt from god" #This is the name of the item, it can have a custom color code
      amount: 1 #The amount of the item in the gui
@@ -26,6 +42,21 @@ items: #Here you set the contents of the gui. it needs to have this tag before a
      itemflags: #This is where you set what itemflags should be on the item. All the valid itemflags can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/inventory/ItemFlag.html
        - HIDE_ENCHANTS
 
+     click-action: #This needs to be added to the item if you want something to happen when the item gets clicked
+        action1: #This is just a identifier and is needed for the code to know that this a action. It can be a number or it can be random string of text
+          click-type: #This is what type of click the player used when clicking on the item, you can leave it blanck or remove it if you want it to happen every time they click on the item.
+            - RIGHT_CLICK #All the valid click types can be found here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/inventory/ClickType.html
+          allow-moving: false #If the item can be moved around in the inventory
+          sound: #This a where you set what sound will be played for the player when they click on the item
+            sound: BLOCK_NOTE_BLOCK_PLING #This is the sound that will be played when they click on the item. All valid sounds can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+            volume: 1 #This is the volume of the sound it can be anything from 0-1.
+            pitch: 0.5 #This is the pitch of the sound and be anything from 0.5-2. Pitch means how fast the sound is played
+          message: #This is the messages sent to the player when they click on the item
+            - "§7This is a §cExample §fGUI click"
+          command-player: #This is the commands the player will send when they click on the item
+            - "/help"
+          command-console: #This is the commands the console will send when they click on the item
+            - "/give {player} diamond"
    item2:
       material: player_head #This is the material the item will be. All the valid material can be found here: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
       display-name: "&l#CD201FYoutube Logo" #For the name of a item you can also minecraft color codes or hex color codes. Minecraft color codes can be found here: https://www.spigotmc.org/attachments/example2-png.188806/
@@ -45,6 +76,7 @@ items: #Here you set the contents of the gui. it needs to have this tag before a
      lore:
        - "§7This is your skull"
      skull-texture: "{player}" #You can also set the skull texture to '{player}' this will set the skull texture to the player that opens the menu
+     custom-model-data: "1" #This is how you set the custom model data for a item
 
    item4:
      material: potion

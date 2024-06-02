@@ -1,7 +1,10 @@
 D:\Coding\Github\ConfigUI\src\main\java\me\messdaniel\configui\command\OpenGuiCommand.java
 D:\Coding\Github\ConfigUI\src\main\java\me\messdaniel\configui\ConfigUI.java
+D:\Coding\Github\ConfigUI\src\main\java\me\messdaniel\configui\menu\ClickAction.java
 D:\Coding\Github\ConfigUI\src\main\java\me\messdaniel\configui\menu\MenuItem.java
+D:\Coding\Github\ConfigUI\src\main\java\me\messdaniel\configui\listener\InventoryEvent.java
 D:\Coding\Github\ConfigUI\src\main\java\me\messdaniel\configui\manager\ConfigUIManger.java
 D:\Coding\Github\ConfigUI\src\main\java\me\messdaniel\configui\menu\Menu.java
 D:\Coding\Github\ConfigUI\src\main\java\me\messdaniel\configui\utils\ColorUtils.java
+D:\Coding\Github\ConfigUI\src\main\java\me\messdaniel\configui\command\ReloadCommand.java
 D:\Coding\Github\ConfigUI\src\main\java\me\messdaniel\configui\utils\MessagesUtils.java

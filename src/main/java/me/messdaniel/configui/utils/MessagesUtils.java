@@ -12,10 +12,12 @@ import java.util.Map;
 
 public class MessagesUtils {
     private static FileConfiguration fc;
+    private static String prefix;
     private static Map<String, String> messages;
 
     public static void load() {
         fc = ConfigUI.getInstance().getConfig();
+        prefix = ColorUtils.translate(fc.getString("prefix","§7[#C0C0C0Config§fUI§7]"));
         loadMessages();
     }
 
@@ -77,6 +79,7 @@ public class MessagesUtils {
 
     public static String getMessage(String key,Object... replaces) {
         String message = getRawMessage(key);
+        message = replace(message,"prefix",prefix);
 
         message = ColorUtils.translate(replace(message, replaces));
 

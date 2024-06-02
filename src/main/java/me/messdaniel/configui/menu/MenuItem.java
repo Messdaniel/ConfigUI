@@ -35,6 +35,8 @@ public class MenuItem {
     private PotionType effect;
     private boolean extended;
     private boolean upgraded;
+    private Integer customModelData;
+    private List<ClickAction> clickActions = new ArrayList<>();
 
     public MenuItem() {
     }
@@ -141,6 +143,25 @@ public class MenuItem {
         this.upgraded = upgraded;
     }
 
+    public Integer getCustomModelData() {
+        return customModelData;
+    }
+
+    public void setCustomModelData(Integer customModelData) {
+        this.customModelData = customModelData;
+    }
+
+    public List<ClickAction> getClickActions() {
+        return clickActions;
+    }
+
+    public void setClickActions(List<ClickAction> clickActions) {
+        this.clickActions = clickActions;
+    }
+    public void addClickAction(ClickAction clickAction) {
+        this.clickActions.add(clickAction);
+    }
+
     public ItemStack createItem(Player player) {
         ItemStack item = new ItemStack(getMaterial(),getAmount());
         ItemMeta meta = item.getItemMeta();
@@ -175,6 +196,9 @@ public class MenuItem {
                 potionMeta.setBasePotionData(potionData);
                 item.setItemMeta(potionMeta);
             }
+        } else if (getCustomModelData() != null) {
+            meta.setCustomModelData(getCustomModelData());
+            item.setItemMeta(meta);
         }
         return item;
     }

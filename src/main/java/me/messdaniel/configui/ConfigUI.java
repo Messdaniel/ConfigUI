@@ -1,8 +1,11 @@
 package me.messdaniel.configui;
 
 import me.messdaniel.configui.command.OpenGuiCommand;
+import me.messdaniel.configui.command.ReloadCommand;
+import me.messdaniel.configui.listener.InventoryEvent;
 import me.messdaniel.configui.manager.ConfigUIManger;
 import me.messdaniel.configui.utils.MessagesUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -18,11 +21,13 @@ public class ConfigUI extends JavaPlugin {
         instance = this;
         saveDefaultResource("config");
         saveDefaultResource("example");
-
         configUIManger = new ConfigUIManger();
         MessagesUtils.load();
 
-        getCommand("opengui").setExecutor(new OpenGuiCommand());
+        Bukkit.getPluginManager().registerEvents(new InventoryEvent(), this);
+
+        getCommand("uiopengui").setExecutor(new OpenGuiCommand());
+        getCommand("uireload").setExecutor(new ReloadCommand());
     }
 
     void saveDefaultResource(String resource) {
