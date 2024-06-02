@@ -1,4 +1,3 @@
-me\messdaniel\configui\menu\ClickAction.class
 me\messdaniel\configui\manager\ConfigUIManger.class
 me\messdaniel\configui\ConfigUI.class
 me\messdaniel\configui\command\ReloadCommand.class
@@ -8,3 +7,4 @@ me\messdaniel\configui\command\OpenGuiCommand.class
 me\messdaniel\configui\utils\MessagesUtils.class
 me\messdaniel\configui\listener\InventoryEvent.class
 me\messdaniel\configui\menu\Menu.class
+me\messdaniel\configui\menu\ClickEvent.class

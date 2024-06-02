@@ -6,7 +6,7 @@ import org.bukkit.event.inventory.ClickType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClickAction {
+public class ClickEvent {
 
     private String name;
     private List<ClickType> clickType = new ArrayList<>();
@@ -18,7 +18,7 @@ public class ClickAction {
     private List<String> commandConsole = new ArrayList<>();
     private boolean allowMoving = false;
 
-    public ClickAction(String name) {
+    public ClickEvent(String name) {
         this.name = name;
     }
 

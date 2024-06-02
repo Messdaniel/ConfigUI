@@ -1,8 +1,7 @@
 package me.messdaniel.configui.manager;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import me.messdaniel.configui.ConfigUI;
-import me.messdaniel.configui.menu.ClickAction;
+import me.messdaniel.configui.menu.ClickEvent;
 import me.messdaniel.configui.menu.Menu;
 import me.messdaniel.configui.menu.MenuItem;
 import me.messdaniel.configui.utils.ColorUtils;
@@ -10,8 +9,6 @@ import me.messdaniel.configui.utils.MessagesUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.enchantments.Enchantment;
@@ -21,7 +18,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.potion.PotionType;
 
-import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -142,10 +138,10 @@ public class ConfigUIManger {
                             menuItem.setUpgraded(cs.getBoolean(key + ".upgraded"));
                         }
                     }
-                    ConfigurationSection caCs = cs.getConfigurationSection(key + ".click-action");
+                    ConfigurationSection caCs = cs.getConfigurationSection(key + ".click-event");
                     if (caCs != null) {
                         for (String caKey : caCs.getKeys(false)) {
-                            ClickAction clickAction = new ClickAction(caKey);
+                            ClickEvent clickEvent = new ClickEvent(caKey);
                             for (String clickTypeString : caCs.getStringList(caKey + ".click-type")) {
                                 ClickType clickType;
                                 try {
@@ -155,9 +151,9 @@ public class ConfigUIManger {
                                     reloadSuccessfully = false;
                                     continue;
                                 }
-                                clickAction.addClickType(clickType);
+                                clickEvent.addClickType(clickType);
                             }
-                            clickAction.setAllowMoving(caCs.getBoolean(caKey + ".allow-moving"));
+                            clickEvent.setAllowMoving(caCs.getBoolean(caKey + ".allow-moving"));
                             if (caCs.get(caKey + ".sound") != null) {
                                 boolean setSound = true;
                                 Sound sound = null;
@@ -169,15 +165,15 @@ public class ConfigUIManger {
                                     reloadSuccessfully = false;
                                 }
                                 if (setSound) {
-                                    clickAction.setSound(sound);
-                                    clickAction.setVolume(caCs.getDouble(caKey + ".sound.volume"));
-                                    clickAction.setPitch(caCs.getDouble(caKey + ".sound.pitch"));
+                                    clickEvent.setSound(sound);
+                                    clickEvent.setVolume(caCs.getDouble(caKey + ".sound.volume"));
+                                    clickEvent.setPitch(caCs.getDouble(caKey + ".sound.pitch"));
                                 }
                             }
-                            clickAction.setMessage(caCs.getStringList(caKey + ".message"));
-                            clickAction.setCommandPlayer(caCs.getStringList(caKey + ".command-player"));
-                            clickAction.setCommandConsole(caCs.getStringList(caKey + ".command-console"));
-                            menuItem.addClickAction(clickAction);
+                            clickEvent.setMessage(caCs.getStringList(caKey + ".message"));
+                            clickEvent.setCommandPlayer(caCs.getStringList(caKey + ".command-player"));
+                            clickEvent.setCommandConsole(caCs.getStringList(caKey + ".command-console"));
+                            menuItem.addClickAction(clickEvent);
                         }
                     }
                     contents.add(menuItem);
@@ -236,36 +232,36 @@ public class ConfigUIManger {
         }
     }
 
-    public void clickAction(InventoryClickEvent event,Menu menu) {
+    public void clickEvent(InventoryClickEvent event,Menu menu) {
         if (menu.getContents().size() == 0) return;
         Player player = (Player) event.getWhoClicked();
         for (MenuItem menuItem : menu.getContents()) {
             if (!menuItem.getSlots().contains(event.getSlot())) continue;
             if (!menuItem.getMaterial().equals(event.getCurrentItem().getType())) continue;
-            for (ClickAction clickAction : menuItem.getClickActions()) {
-                if (!clickAction.getClickType().isEmpty()) {
+            for (ClickEvent clickEvent : menuItem.getClickActions()) {
+                if (!clickEvent.getClickType().isEmpty()) {
                     boolean sameClick = false;
-                    for (ClickType clickType : clickAction.getClickType()) {
+                    for (ClickType clickType : clickEvent.getClickType()) {
                         if (!event.getClick().equals(clickType)) continue;
                         sameClick = true;
                         break;
                     }
                     if (!sameClick) continue;
                 }
-                if (clickAction.isAllowMoving()) event.setCancelled(false);
-                if (clickAction.getSound() != null) {
-                    player.playSound(player.getLocation(),clickAction.getSound(), (float) clickAction.getVolume(), (float) clickAction.getPitch());
+                if (clickEvent.isAllowMoving()) event.setCancelled(false);
+                if (clickEvent.getSound() != null) {
+                    player.playSound(player.getLocation(), clickEvent.getSound(), (float) clickEvent.getVolume(), (float) clickEvent.getPitch());
                 }
 
-                for (String message : clickAction.getMessage()) {
+                for (String message : clickEvent.getMessage()) {
                     if (message == null || message.equalsIgnoreCase("")) continue;
                     player.sendMessage(ColorUtils.translate(message));
                 }
-                for (String command : clickAction.getCommandPlayer()) {
+                for (String command : clickEvent.getCommandPlayer()) {
                     if (command == null || command.equalsIgnoreCase("")) continue;
                     player.performCommand(command.replaceFirst("/",""));
                 }
-                for (String command : clickAction.getCommandConsole()) {
+                for (String command : clickEvent.getCommandConsole()) {
                     if (command == null || command.equalsIgnoreCase("")) continue;
                     Bukkit.dispatchCommand(Bukkit.getConsoleSender(),command.replace("{player}",player.getName()).replaceFirst("/",""));
                 }

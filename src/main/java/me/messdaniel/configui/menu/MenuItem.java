@@ -3,8 +3,6 @@ package me.messdaniel.configui.menu;
 import me.messdaniel.configui.utils.ColorUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
@@ -13,7 +11,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.potion.PotionData;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 import org.bukkit.profile.PlayerProfile;
 import org.bukkit.profile.PlayerTextures;
@@ -36,7 +33,7 @@ public class MenuItem {
     private boolean extended;
     private boolean upgraded;
     private Integer customModelData;
-    private List<ClickAction> clickActions = new ArrayList<>();
+    private List<ClickEvent> clickEvents = new ArrayList<>();
 
     public MenuItem() {
     }
@@ -151,15 +148,15 @@ public class MenuItem {
         this.customModelData = customModelData;
     }
 
-    public List<ClickAction> getClickActions() {
-        return clickActions;
+    public List<ClickEvent> getClickActions() {
+        return clickEvents;
     }
 
-    public void setClickActions(List<ClickAction> clickActions) {
-        this.clickActions = clickActions;
+    public void setClickActions(List<ClickEvent> clickEvents) {
+        this.clickEvents = clickEvents;
     }
-    public void addClickAction(ClickAction clickAction) {
-        this.clickActions.add(clickAction);
+    public void addClickAction(ClickEvent clickEvent) {
+        this.clickEvents.add(clickEvent);
     }
 
     public ItemStack createItem(Player player) {

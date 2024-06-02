@@ -29,7 +29,7 @@ public class InventoryEvent implements Listener {
         for (Menu menu : configUIManger.getAllGuis().values()) {
             if (!event.getView().getTitle().equalsIgnoreCase(menu.getTitle())) return;
             if (menu.isDisabledMovingItems() && !player.getItemOnCursor().getType().isAir()) event.setCancelled(true);
-            ConfigUI.getInstance().getConfigUIManger().clickAction(event,menu);
+            ConfigUI.getInstance().getConfigUIManger().clickEvent(event,menu);
             return;
         }
     }

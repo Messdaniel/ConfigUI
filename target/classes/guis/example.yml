@@ -2,7 +2,7 @@ gui: #Here you set some information about the gui
    title: "Example GUI"
    size: 54 #The size of a gui can be 9,18, 27, 36, 45, 54
    disable-moving-items: true #If the player should be able to move items around in the inventory can. This can only be 'true' or 'false'
-   permission-needed: "" #Here you can specify a permission a player needs to have to open the menu, if you dont want one you can just leave it blank or remove the line
+   permission-needed: "" #Here you can specify a permission a player needs to open the menu, if you dont want one you can just leave it blank or remove the line
 
    open-event: #This is what will happen when the gui gets opened
      sound: #This a where you set what sound will be played for the player when the player opens the gui
@@ -76,6 +76,7 @@ items: #Here you set the contents of the gui. it needs to have this tag before a
      lore:
        - "§7This is your skull"
      skull-texture: "{player}" #You can also set the skull texture to '{player}' this will set the skull texture to the player that opens the menu
+     custom-model-data: "1" #This is how you set the custom model data for a item
 
    item4:
      material: potion

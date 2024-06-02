@@ -1,7 +1,6 @@
 package me.messdaniel.configui.utils;
 
 import org.bukkit.ChatColor;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
